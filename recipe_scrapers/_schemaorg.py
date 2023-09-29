@@ -145,8 +145,8 @@ class SchemaOrg:
             raise SchemaOrgException("Image not found in SchemaOrg")
 
         if isinstance(image, list):
-            # Could contain a dict
-            image = image[0]
+            # Get the first not empty item
+            next(s for s in image if s)
 
         if isinstance(image, dict):
             image = image.get("url")
